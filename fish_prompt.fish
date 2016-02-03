@@ -1,4 +1,4 @@
-# name: eclm
+# name: mars (based on eclm)
 function _git_branch_name
   echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 end
@@ -17,28 +17,26 @@ function fish_prompt
   set -l normal (set_color normal)
 
   if test $last_status = 0
-      set arrow "$green➜ "
+      set arrow " $green▶︎"
   else
-      set arrow "$red➜ "
+      set arrow " $red▶︎"
   end
-  set -l cwd $cyan(basename (prompt_pwd))
+  set -l cwd $cyan(prompt_pwd)
 
   if [ (_git_branch_name) ]
-
-    if test (_git_branch_name) = 'master'
-      set -l git_branch (_git_branch_name)
-      set git_info "$blue ($red$git_branch$blue)"
-    else
-      set -l git_branch (_git_branch_name)
-      set git_info "$blue ($git_branch)$blue"
-    end
+    set git_branch (_git_branch_name)
 
     if [ (_is_git_dirty) ]
-      set -l dirty "$yellow ✗"
-      set git_info "$git_info$dirty"
+      set git_info "$blue ($yellow$git_branch±$blue)"
+    else
+      if test (_git_branch_name) = 'master'
+        set git_info "$blue ($red$git_branch$blue)"
+      else
+        set git_info "$blue ($normal$git_branch$blue)"
+      end
     end
   end
 
-  echo -n -s $arrow $cwd $git_info $normal ' '
+  echo -n -s $cwd $git_info $normal $arrow $normal ' '
 end
 
