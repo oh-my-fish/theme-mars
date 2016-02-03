@@ -1,7 +1,7 @@
-## eclm
-Based on the robbyrussell theme.
+## mars
+Based on the eclm theme (which was based on the robbyrussell theme).
 
-![eclm theme](https://raw.githubusercontent.com/oh-my-fish/theme-eclm/master/screenshot.png)
+![mars theme](https://raw.githubusercontent.com/mvader/theme-mars/master/screenshot.png)
 
 
 #### Characteristics
