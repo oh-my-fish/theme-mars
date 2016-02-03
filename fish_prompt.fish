@@ -17,9 +17,9 @@ function fish_prompt
   set -l normal (set_color normal)
 
   if test $last_status = 0
-      set arrow " $green⋗︎"
+      set arrow " $green▶︎︎"
   else
-      set arrow " $red⋗︎"
+      set arrow " $red▶︎︎"
   end
   set -l cwd $cyan(prompt_pwd)
 
